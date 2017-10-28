@@ -1,6 +1,7 @@
 # docker-commands
 Some of my useful docker commands
 
+Cleaning up previously built image and container
 <pre>
 #!/bin/bash
 
@@ -22,4 +23,12 @@ export DOCKER_CERT_PATH=/var/lib/jenkins/dockerauth/rightway
              awk '{ print $3 }' | \
              xargs -I img ./docker/docker \
                            rmi -f img
+</pre>
+
+Downloading particular docker version if does not exist in workspace
+<pre>
+if [ ! -f docker-1.11.2.tgz ]; then
+	wget https://get.docker.com/builds/Linux/x86_64/docker-1.11.2.tgz
+	tar -zxvf docker-1.11.2.tgz
+fi
 </pre>
